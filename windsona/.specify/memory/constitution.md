@@ -18,10 +18,10 @@ The app must be usable on desktop and mobile devices, and meet basic accessibili
 Use semantic versioning (MAJOR.MINOR.PATCH) for releases. Document changes in a changelog.
 
 ## Technology Constraints
-Use only standard web technologies: HTML5, CSS3, JavaScript (ES6+). No backend, no database. Optional: static site generators (e.g., Vite, Next.js static export).
+Use the following web technologies: HTML5, CSS3, JavaScript (ES6+), Tailwind, and React. No backend, no database. Optional: static site generators (e.g., Vite for build and deployment, Next.js static export, React-based frameworks).
 
 ## Development Workflow
-Code must be reviewed before merging. All tests must pass before deployment. Deployment is to a static hosting service (e.g., GitHub Pages, Netlify).
+Code must be reviewed before merging. All tests must pass before deployment. Build and deploy the app using Vite to a static hosting service (e.g., GitHub Pages, Netlify).
 
 ## Governance
 This constitution supersedes other practices for this app. Amendments require documentation and approval by project owner.

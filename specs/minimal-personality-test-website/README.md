@@ -1,14 +1,14 @@
 # Minimal Personality Test Website Documentation
 
 ## Overview
-This is a minimal, static personality test website built with React, Tailwind CSS, and Vite. It is designed for mobile-first use, with no data persistence or tracking.
+This is a minimal, static personality test website built with React and Vite. It is designed for mobile-first use, with no data persistence or tracking.
 
 ## Features
 - Take a simple personality test
 - View result and detailed explanation
 - See test purpose and privacy info
-- Minimal design, fast load
-- 100% client-side, no backend
+Minimal design, fast load
+100% client-side, no backend
 
 ## Accessibility
 - ARIA roles and labels for all interactive elements
@@ -39,9 +39,9 @@ This is a minimal, static personality test website built with React, Tailwind CS
 - `public/`: Static assets
 
 ## Performance
-- Uses Vite for fast static builds
-- Minimal bundle size
-- No external dependencies except React and Tailwind
+Uses Vite for fast static builds
+Minimal bundle size
+No external dependencies except React
 
 ---
 For more details, see the source code and comments.

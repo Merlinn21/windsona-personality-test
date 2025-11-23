@@ -48,8 +48,10 @@ function App() {
     }
   }
 
+  console.log("Current Page:", page);
+
   return (
-    <div className="min-h-screen bg-gray-50 relative">
+    <div style={{ minHeight: '100vh', background: '#FFD200', position: 'relative' }}>
       <Navigation currentPage={page} setPage={setPage} />
       {page === PAGES.LANDING && (
         <LandingPage
@@ -68,10 +70,10 @@ function App() {
       )}
       {page === PAGES.LOADING && <LoadingPage />}
       {page === PAGES.RESULT && answers.length === QUESTIONS.length && (
-        <div className="flex flex-col items-center justify-center h-screen">
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
           <ResultPage result={result} />
           <button
-            className="mt-4 px-4 py-2 bg-gray-700 text-white rounded"
+            style={{ marginTop: '1rem', padding: '0.5rem 1rem', background: '#444', color: '#fff', borderRadius: '0.25rem', border: 'none' }}
             onClick={() => setPage(PAGES.RESULT_DETAIL)}
             aria-label="View Details"
           >
@@ -79,14 +81,14 @@ function App() {
           </button>
         </div>
       )}
-            {page === PAGES.RESULT_DETAIL && (
-              <ResultDetailPage result={result} />
-            )}
+      {page === PAGES.RESULT_DETAIL && (
+        <ResultDetailPage result={result} />
+      )}
       {page === PAGES.RESULT && answers.length !== QUESTIONS.length && (
-        <div className="flex flex-col items-center justify-center h-screen">
-          <h2 className="text-xl font-semibold mb-2 text-red-600">Error</h2>
-          <p className="text-base">You must complete all questions before viewing the result.</p>
-          <button className="mt-4 px-4 py-2 bg-blue-600 text-white rounded" onClick={handleStartTest}>Restart Test</button>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
+          <h2 style={{ fontSize: '1.25rem', fontWeight: '600', marginBottom: '0.5rem', color: '#d32f2f' }}>Error</h2>
+          <p style={{ fontSize: '1rem' }}>You must complete all questions before viewing the result.</p>
+          <button style={{ marginTop: '1rem', padding: '0.5rem 1rem', background: '#1976d2', color: '#fff', borderRadius: '0.25rem', border: 'none' }} onClick={handleStartTest}>Restart Test</button>
         </div>
       )}
     </div>

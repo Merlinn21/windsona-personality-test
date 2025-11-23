@@ -22,10 +22,10 @@ export default function LandingPage({ onStart, onExplain }) {
           style={{ width: '60%', position: 'absolute', top: '-10%', right: '-20%', zIndex: 2 }}
         />
 
-          <img
+        <img
           src="/images/ic_windsona_logo.png"
           alt="Landing Page Image"
-          style={{ width: '100%', position: 'absolute', zIndex: 3, top : '15%' }}
+          style={{ width: '80%', position: 'absolute', zIndex: 3, top : '15%', alignItems: 'center', left: '10%' }}
         />
       </div>
 
@@ -33,7 +33,7 @@ export default function LandingPage({ onStart, onExplain }) {
         style={{
             fontFamily: "'Pixelify Sans', sans-serif",
             fontWeight: 700,
-            fontSize: "28px",
+            fontSize: "18px",
             lineHeight: "1.25",
             textAlign: "center",
             color: "#FFFFFF",
@@ -49,13 +49,13 @@ export default function LandingPage({ onStart, onExplain }) {
             `
           }}
       >
-        CATCH YOUR VIBE,<br />MEET YOUR WINDSONA
+        CATCH YOUR VIBE, MEET YOUR WINDSONA
       </p>
 
-        <img
-          src="/images/ic_start.png"
-          style={{ width: '70%', display: 'block', margin: 'auto 0 auto', zIndex: 2 }}
-        />
+      <img
+        src="/images/ic_start.png"
+        style={{ width: '50%', display: 'block', margin: 'auto 0 auto', zIndex: 2 }}
+      />
       <img
           src="/images/ic_background_ground.png"
           style={{ width: '100%', position: 'absolute',bottom: 0, zIndex: 2 }}

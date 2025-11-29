@@ -44,23 +44,56 @@ export default function ExplanationPage({ onBack, onContinue }) {
         </p>
       </div>
 
-      <img
-        src="/images/ic_continue.png"
+      <div
         style={{
-          width: '70%',
-          position: 'fixed',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          bottom: '32px',
-          zIndex: 3,
-          cursor: 'pointer'
+          position: 'relative',
+          width: 'fit-content',
+          margin: '0 auto',
+          backgroundColor: 'transparent',
         }}
-        onClick={onContinue}
-        alt="Continue Button"
-      />
+      >
+        {/* IMAGE — large, natural size */}
+        <img
+          src="/images/ic_continue.png"
+          alt="Continue"
+          style={{
+            display: 'block',
+            margin: '0 auto',
+            pointerEvents: 'none',
+            width: '180px',
+          }}
+        />
+
+        {/* CLICKABLE HITBOX — placed on top */}
+        <div
+          onPointerDown={onContinue}
+          style={{
+            position: 'absolute',
+            top: '40%',                      // adjust if needed
+            left: '50%',                   // center horizontally
+            transform: 'translateX(-50%)', // center alignment
+            width: '180px',
+            height: '50px',
+            cursor: 'pointer',
+            zIndex: 10,
+            backgroundColor: 'transparent', // invisible but clickable
+          }}
+        />
+      </div>
+
       <img
-          src="/images/ic_background_ground.png"
-          style={{ width: '100%', position: 'fixed', left: 0,bottom: 0, zIndex: 2, height: '200px' }}
+        src="/images/ic_background_ground.png"
+        style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          height: '200px',
+          display: 'block',
+          zIndex: 2,
+          pointerEvents: 'none'
+        }}
+        alt="Background Ground"
       />
     </div>
   );

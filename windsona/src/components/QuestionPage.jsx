@@ -206,8 +206,18 @@ export default function QuestionPage({ questionIndex, answers, setAnswers, onNex
       </div>
 
       <img
-          src="/images/ic_background_ground.png"
-          style={{ width: '100%', position: 'fixed', left: 0,bottom: 0, zIndex: 2, height: '200px' }}
+        src="/images/ic_background_ground.png"
+        style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          height: '200px',
+          display: 'block',
+          zIndex: 2,
+          pointerEvents: 'none'
+        }}
+        alt="Background Ground"
       />
     </div>
   );

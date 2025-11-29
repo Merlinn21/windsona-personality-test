@@ -52,14 +52,16 @@ function App() {
 
   return (
     <div style={{ minHeight: '100vh', background: '#FFD200', position: 'relative' }}>
-      <Navigation currentPage={page} setPage={setPage} />
       {page === PAGES.LANDING && (
         <LandingPage
           onStart={handleStartTest}
           onExplain={() => setPage(PAGES.EXPLANATION)}
         />
       )}
-      {page === PAGES.EXPLANATION && <ExplanationPage />}
+      {page === PAGES.EXPLANATION && <ExplanationPage onBack={() => {
+        console.log("Going back to landing page");
+        setPage(PAGES.LANDING);
+      }} onContinue={handleStartTest} />}
       {page === PAGES.QUESTION && (
         <QuestionPage
           questionIndex={questionIndex}

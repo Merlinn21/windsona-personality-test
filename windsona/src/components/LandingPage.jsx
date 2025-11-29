@@ -30,31 +30,16 @@ export default function LandingPage({ onStart, onExplain }) {
       </div>
 
       <p 
-        style={{
-            fontFamily: "'Pixelify Sans', sans-serif",
-            fontWeight: 700,
-            fontSize: "18px",
-            lineHeight: "1.25",
-            textAlign: "center",
-            color: "#FFFFFF",
-            textShadow: `
-              -2px -2px 0 #331D0E,
-              2px -2px 0 #331D0E,
-              -2px  2px 0 #331D0E,
-              2px  2px 0 #331D0E,
-              -2px  0px 0 #331D0E,
-              2px  0px 0 #331D0E,
-              0px -2px 0 #331D0E,
-              0px  2px 0 #331D0E
-            `
-          }}
+        className="font-pixelify"
       >
         CATCH YOUR VIBE, MEET YOUR WINDSONA
       </p>
 
       <img
         src="/images/ic_start.png"
-        style={{ width: '50%', display: 'block', margin: 'auto 0 auto', zIndex: 2 }}
+        style={{ width: '50%', display: 'block', margin: 'auto 0 auto', zIndex: 2, cursor: 'pointer' }}
+        onClick={onExplain}
+        alt="Start Button"
       />
       <img
           src="/images/ic_background_ground.png"

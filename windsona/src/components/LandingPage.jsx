@@ -25,7 +25,7 @@ export default function LandingPage({ onStart, onExplain }) {
         <img
           src="/images/ic_windsona_logo.png"
           alt="Landing Page Image"
-          style={{ width: '80%', position: 'absolute', zIndex: 3, top : '15%', alignItems: 'center', left: '10%' }}
+          style={{ width: '80%', position: 'absolute', zIndex: 3, top : '30%', alignItems: 'center', left: '10%' }}
         />
       </div>
 

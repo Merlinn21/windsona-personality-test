@@ -1,20 +1,115 @@
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
+import OptionBox from "./component/OptionBox.jsx";
 const QUESTIONS = [
   {
     id: 1,
-    text: "You enjoy social gatherings.",
-    options: ["Agree", "Neutral", "Disagree"],
+    text: "TIM KAMU TERJEBAK DI DALAM MAZE!! INSTING PERTAMAMU APA?",
+    options: [
+      "Cari petunjuk pelan-pelan sambil nginget jalurnya.", 
+      "Lontarin ide secepet kilat — yang penting tim gerak dulu.", 
+      "Naikin mood tim dulu, “Santai guys, kita pasti bisa!”", 
+      "Langsung ambil alih, bagi peran biar maze nggak makan waktu."
+    ],
+    images: "/ic_question_1.png",
   },
   {
     id: 2,
-    text: "You prefer planning over spontaneity.",
-    options: ["Agree", "Neutral", "Disagree"],
+    text: "TIBA-TIBA KAMU DAPET BANYAK MISI, TAPI ENERGY KAMU MENURUN TERUS...",
+    options: [
+      "Pecah semuanya jadi mini-mission. Kerjain satu per satu.",
+      "Multitasking mode chaos — anehnya selalu berhasil.",
+      "Ajak temen buat brainstorming bareng.",
+      "Tentuin prioritas, fokus total, dunia disilent dulu."
+    ],
+    images: "/ic_question_2.png",
   },
   {
     id: 3,
-    text: "You like to try new things.",
-    options: ["Agree", "Neutral", "Disagree"],
+    text: "KAMU LAGI MILIH TIM BUAT MISI BESAR, KAMU PILIH YANG...",
+    options: [
+      "Pikirannya dalem dan suka notice detail kecil.", 
+      "Bawa hype + kreativitas di tiap misi.", 
+      "Jaga mood tim tetap adem dan kompak.", 
+      "Efisien, bisa diandelin, dan fokus ke hasil."
+    ],
+    images: "/ic_question_3.png",
+  },
+  {
+    id: 4,
+    text: "KAMU KETEMU NPC BARU YANG CEREWET BANGET. REAKSI KAMU?",
+    options: [
+      "Dengerin sambil observasi, ngomong seperlunya aja.", 
+      "Nyamain energi mereka—langsung cocok banget.", 
+      "Dengerin dengan hangat, pengen ngerti ceritanya.", 
+      "Singkat aja; kamu lagi fokus ke quest."
+    ],
+    images: "/ic_question_4.png",
+  },
+  {
+    id: 5,
+    text: "BOSS FIGHT DI DEPAN MATA!! PERAN KAMU DALAM TIM APA?",
+    options: [
+      "Strategist — analisis pola, cari jalan aman buat menang.", 
+      "Damage Dealer — all out, percaya insting sendiri.", 
+      "Support/Healer — pastiin semua tetap tenang & stabil.", 
+      "Leader/Tank — maju duluan, atur formasi, lindungi tim."
+    ],
+    images: "/ic_question_5.png",
+  },
+  {
+    id: 6,
+    text: "ADA MINI-MISSION BARU WAKTU KAMU LAGI NGERJAIN MISI UTAMA...",
+    options: [
+      "Skip dulu. Selesaikan main mission.", 
+      "Ambil langsung—kayanya seru.", 
+      "Tanya siapa yang mau join dulu.", 
+      "Lihat worth it atau enggaknya, baru decide."
+    ],
+    images: "/ic_question_6.png",
+  },
+  {
+    id: 7,
+    text: "INVENTORY FULL!! TAS KAMU ISINYA APA AJA?",
+    options: [
+      "Tools, notebook, item puzzle.", 
+      "Barang random yang kamu ambil “siapa tau kepake”.", 
+      "Hadiah / barang dari temen.", 
+      "Barang penting doang—rapi, efisien, terurut."
+    ],
+    images: "/ic_question_7.png",
+  },
+  {
+    id: 8,
+    text: "KAMU MASUK AREA BARU, HAL PERTAMA YANG KAMU LAKUIN?",
+    options: [
+      "Jalan pelan, observasi sekitar dulu.", 
+      "Lari ke mana-mana biar lihat semuanya.", 
+      "Cari orang buat diajak ngobrol.", 
+      "Tandain area penting dan bikin rute."
+    ],
+    images: "/ic_question_8.png",
+  },
+  {
+    id: 9,
+    text: "TEMEN PARTY KAMU TIBA-TIBA CURHAT TENTANG STRUGGLE MEREKA...",
+    options: [
+      "Dengerin dalam-dalam dan kasih insight yang mikir banget.", 
+      "Bercanda atau nge-hype mereka biar mood naik lagi.", 
+      "Kasih kenyamanan dan nemenin sampai mereka better.", 
+      "Langsung bantu cari solusi yang praktis."
+    ],
+    images: "/ic_question_9.png",
+  },
+  {
+    id: 10,
+    text: "LEVEL UP!! KAMU DAPET +1 SKILL POINT, MAU UPGRADE APA?",
+    options: [
+      "Insight & analisis", 
+      "Kreativitas & spontanitas", 
+      "Empati & harmoni", 
+      "Disiplin & pengambilan keputusan"
+    ],
+    images: "/ic_question_10.png",
   },
 ];
 
@@ -24,10 +119,12 @@ export default function QuestionPage({ questionIndex, answers, setAnswers, onNex
 
   function handleSelect(option) {
     setSelected(option);
+    handleNext(option);
   }
 
-  function handleNext() {
-    if (!selected) return;
+  function handleNext(selected) {
+    if (selected === undefined || selected === null) return;
+    console.log("Handling next for question index:", questionIndex, "with selected:", selected);
     const newAnswers = [...answers];
     newAnswers[questionIndex] = selected;
     setAnswers(newAnswers);
@@ -35,35 +132,83 @@ export default function QuestionPage({ questionIndex, answers, setAnswers, onNex
   }
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen" role="main" aria-label={`Question ${questionIndex + 1}`}>
-      <h2 className="text-xl font-semibold mb-4" tabIndex={0}>Question {questionIndex + 1}</h2>
-      <p className="mb-6 text-base" tabIndex={0}>{question.text}</p>
-      <div className="flex flex-col gap-2 mb-8" role="radiogroup" aria-label="Answer options">
-        {question.options.map((option) => (
-          <button
-            key={option}
-            className={`px-4 py-2 rounded border ${selected === option ? "bg-blue-600 text-white" : "bg-white text-gray-800"}`}
-            onClick={() => handleSelect(option)}
-            aria-pressed={selected === option}
-            aria-label={option}
-            tabIndex={0}
-          >
-            {option}
-          </button>
-        ))}
+    <div style={{ height: '100%', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} role="main" aria-label="Landing Page">
+      <div style={{ position: 'relative', width: '100%', minHeight: '15vh' }}>
+        
+        <img
+          src="/images/ic_windsona_logo.png"
+          alt="Landing Page Image"
+          style={{ width: '60%', position: 'absolute', zIndex: 3, top : '-30%', alignItems: 'center', left: '50%', transform: 'translateX(-50%)' }}
+        />
+
+        <img
+          src="/images/ic_background_gradient.png"
+          alt="Landing Page Image"
+          style={{ width: '100%', position: 'absolute', top: 0, left: 0, zIndex: 1 }}
+        />
+
+        <img
+          src="/images/ic_background_cloud.png"
+          alt="Landing Page Image"
+          style={{ width: '60%', position: 'absolute', top: '-50%', left: '-25%', zIndex: 2 }}
+        />
+
+        <img
+          src="/images/ic_background_cloud.png"
+          alt="Landing Page Image"
+          style={{ width: '60%', position: 'absolute', top: '-80%', right: '-30%', zIndex: 2 }}
+        />
       </div>
-      <button
-        className="px-4 py-2 bg-green-600 text-white rounded"
-        onClick={handleNext}
-        disabled={!selected}
-        aria-label={questionIndex < QUESTIONS.length - 1 ? "Next Question" : "Finish Test"}
-        tabIndex={0}
+
+      <p 
+        className="font-pixelify"
+        style={{
+          zIndex: 10,
+          marginTop: '0.5rem'
+      }}>
+        {questionIndex + 1 < 10 ? `0${questionIndex + 1}` : questionIndex + 1}/10
+      </p>
+
+
+      <div style={{ position: 'relative', width: '65%', marginTop: '0rem', zIndex: 2 }}>
+        <img
+          src="/images/ic_question_box.png"
+          style={{ width: '100%', display: 'block' }}
+        />
+        {question.images && (
+          <img
+            src={`/images${question.images}`}
+            alt="Question Visual"
+            style={{
+              position: 'absolute',
+              top: '44%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: '60%',
+              zIndex: 3
+            }}
+          />
+        )}
+      </div>
+
+      <p 
+        className="font-pixelify"
+        style={{fontSize: "16px", paddingLeft: "16px", paddingRight:  "16px"}}
       >
-        {questionIndex < QUESTIONS.length - 1 ? "Next" : "Finish"}
-      </button>
-      {!selected && (
-        <p className="mt-2 text-sm text-red-600">Please select an answer to continue.</p>
-      )}
+        {question.text}
+      </p>
+
+      <div style={{ width: '80%', zIndex: 5 }}>
+        <OptionBox optionText={`A. ${question.options[0]}`} onClick={() => handleSelect(0)} />
+        <OptionBox optionText={`B. ${question.options[1]}`} onClick={() => handleSelect(1)} />
+        <OptionBox optionText={`C. ${question.options[2]}`} onClick={() => handleSelect(2)} />
+        <OptionBox optionText={`D. ${question.options[3]}`} onClick={() => handleSelect(3)} />
+      </div>
+
+      <img
+          src="/images/ic_background_ground.png"
+          style={{ width: '100%', position: 'fixed', left: 0,bottom: 0, zIndex: 2, height: '200px' }}
+      />
     </div>
   );
 }

@@ -31,6 +31,7 @@ function App() {
 
   function handleNextQuestion() {
     if (questionIndex < QUESTIONS.length - 1) {
+      console.log("questionIndex before next:", questionIndex);
       setQuestionIndex(questionIndex + 1);
     } else {
       setPage(PAGES.LOADING);
@@ -59,7 +60,6 @@ function App() {
         />
       )}
       {page === PAGES.EXPLANATION && <ExplanationPage onBack={() => {
-        console.log("Going back to landing page");
         setPage(PAGES.LANDING);
       }} onContinue={handleStartTest} />}
       {page === PAGES.QUESTION && (

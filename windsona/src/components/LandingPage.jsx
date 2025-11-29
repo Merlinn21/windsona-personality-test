@@ -43,7 +43,7 @@ export default function LandingPage({ onStart, onExplain }) {
       />
       <img
           src="/images/ic_background_ground.png"
-          style={{ width: '100%', position: 'absolute',bottom: 0, zIndex: 2 }}
+          style={{ width: '100%', position: 'fixed', left: 0,bottom: 0, zIndex: 2, height: '200px' }}
       />
     </div>
   );

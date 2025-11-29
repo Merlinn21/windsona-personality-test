@@ -3,29 +3,6 @@ import React from "react";
 export default function ExplanationPage({ onBack, onContinue }) {
   return (
     <div style={{ height: '100%', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} role="main" aria-label="Landing Page">
-      <button
-        onClick={onBack}
-        style={{
-          background: 'transparent',
-          border: 'none',
-          padding: 0,
-          cursor: 'pointer',
-          position: 'absolute',
-          zIndex: 10,
-          top: '1rem',
-          left: '1rem',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
-        aria-label="Back to Landing"
-      >
-        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="24" cy="24" r="24" />
-          <path d="M30 24H18M18 24L24 18M18 24L24 30" stroke="#ffffffff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      </button>
-
       <div style={{ position: 'relative', width: '100%', minHeight: '15vh' }}>
         <img
           src="/images/ic_background_gradient.png"
@@ -83,7 +60,7 @@ export default function ExplanationPage({ onBack, onContinue }) {
       />
       <img
           src="/images/ic_background_ground.png"
-          style={{ width: '100%', position: 'fixed', left: 0,bottom: 0, zIndex: 2 }}
+          style={{ width: '100%', position: 'fixed', left: 0,bottom: 0, zIndex: 2, height: '200px' }}
       />
     </div>
   );

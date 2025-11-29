@@ -1,3 +1,48 @@
+/* Option box container */
+.option-box {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  border-width: 2px;
+  border-color: #331D0E;
+  background-color: #FFFFFF;
+  border-radius: 32px;
+  border-style: solid;
+  width: 100%;
+  padding-left: 12px;
+  height: 56px; /* static height for all option boxes */
+}
+
+/* Option text wrapper */
+.option-text {
+  width: 100%;
+  min-height: 2.4em;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: 12px;
+}
+
+/* Center text vertically if short */
+.option-text-center {
+  align-items: center !important;
+  margin-top: 8px;
+}
+
+/* Option paragraph styling */
+.option-text p {
+  text-align: start;
+  width: 100%;
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 .font-pixelify {
   font-family: 'Pixelify Sans', sans-serif;
   font-weight: 700;
@@ -23,4 +68,14 @@
   font-size: 14px;
   line-height: 1;
   letter-spacing: 0;
+}
+
+.option-box-a {
+  background-color: #ffffff;
+  transition: background-color 0.15s ease;
+}
+
+.option-box-a.pressed {
+  background-color: #FFD200;
+  transform: scale(0.97);
 }

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import OptionBox from "./component/OptionBox.jsx";
-import BackgroundContainer from "./component/BackgroundContainer.jsx";
 const QUESTIONS = [
   {
     id: 1,
@@ -133,15 +132,31 @@ export default function QuestionPage({ questionIndex, answers, setAnswers, onNex
   }
 
   return (
-    <BackgroundContainer
-      background="/images/ic_background_ground.png"
-    >
-
-      <div style={{ marginTop: '-2rem', height: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <div style={{ height: '100%', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} role="main" aria-label="Landing Page">
+      <div style={{ position: 'relative', width: '100%', minHeight: '15vh' }}>
+        
         <img
           src="/images/ic_windsona_logo.png"
-          style={{ height: '100%', objectFit: 'contain', pointerEvents: 'none' }}
-          alt=""
+          alt="Landing Page Image"
+          style={{ width: '60%', position: 'absolute', zIndex: 3, top : '-30%', alignItems: 'center', left: '50%', transform: 'translateX(-50%)' }}
+        />
+
+        <img
+          src="/images/ic_background_gradient.png"
+          alt="Landing Page Image"
+          style={{ width: '100%', position: 'absolute', top: 0, left: 0, zIndex: 1 }}
+        />
+
+        <img
+          src="/images/ic_background_cloud.png"
+          alt="Landing Page Image"
+          style={{ width: '60%', position: 'absolute', top: '-50%', left: '-25%', zIndex: 2 }}
+        />
+
+        <img
+          src="/images/ic_background_cloud.png"
+          alt="Landing Page Image"
+          style={{ width: '60%', position: 'absolute', top: '-80%', right: '-30%', zIndex: 2 }}
         />
       </div>
 
@@ -149,13 +164,13 @@ export default function QuestionPage({ questionIndex, answers, setAnswers, onNex
         className="font-pixelify"
         style={{
           zIndex: 10,
-          marginTop: '-3rem'
+          marginTop: '0.5rem'
       }}>
         {questionIndex + 1 < 10 ? `0${questionIndex + 1}` : questionIndex + 1}/10
       </p>
 
 
-      <div style={{ position: 'relative', width: '65%', margin: '0 auto', zIndex: 2  }}>
+      <div style={{ position: 'relative', width: '65%', marginTop: '0rem', zIndex: 2 }}>
         <img
           src="/images/ic_question_box.png"
           style={{ width: '100%', display: 'block' }}
@@ -183,15 +198,28 @@ export default function QuestionPage({ questionIndex, answers, setAnswers, onNex
         {question.text}
       </p>
 
-      <div style={{ width: '80%', zIndex: 5, margin: '0 auto' }}>
+      <div style={{ width: '80%', zIndex: 5 }}>
         <OptionBox optionText={`A. ${question.options[0]}`} onClick={() => handleSelect(0)} />
         <OptionBox optionText={`B. ${question.options[1]}`} onClick={() => handleSelect(1)} />
         <OptionBox optionText={`C. ${question.options[2]}`} onClick={() => handleSelect(2)} />
         <OptionBox optionText={`D. ${question.options[3]}`} onClick={() => handleSelect(3)} />
       </div>
 
-
-    </BackgroundContainer>
+      <img
+        src="/images/ic_background_ground.png"
+        style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          height: '200px',
+          display: 'block',
+          zIndex: 2,
+          pointerEvents: 'none'
+        }}
+        alt="Background Ground"
+      />
+    </div>
   );
 }
 

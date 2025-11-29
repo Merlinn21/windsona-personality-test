@@ -1,19 +1,36 @@
 import React from "react";
-import BackgroundContainer from "./component/BackgroundContainer";
 
 export default function ExplanationPage({ onBack, onContinue }) {
   return (
-    <BackgroundContainer
-      background="/images/ic_background_ground.png"
-    >
+    <div style={{ height: '100%', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} role="main" aria-label="Landing Page">
+      <div style={{ position: 'relative', width: '100%', minHeight: '15vh' }}>
+        <img
+          src="/images/ic_background_gradient.png"
+          alt="Landing Page Image"
+          style={{ width: '100%', position: 'absolute', top: 0, left: 0, zIndex: 1 }}
+        />
+
+        <img
+          src="/images/ic_background_cloud.png"
+          alt="Landing Page Image"
+          style={{ width: '60%', position: 'absolute', top: '-10%', left: '-25%', zIndex: 2 }}
+        />
+
+        <img
+          src="/images/ic_background_cloud.png"
+          alt="Landing Page Image"
+          style={{ width: '60%', position: 'absolute', top: '-10%', right: '-20%', zIndex: 2 }}
+        />
+      </div>
+
       <img
         src="/images/ic_explanation_loading.png"
         alt="Landing Page Image"
-        style={{ width: '80%', display: 'block', margin: '4rem auto', zIndex: 2, cursor: 'pointer' }}
+        style={{ width: '80%', display: 'block', margin: '0 auto', zIndex: 2, cursor: 'pointer' }}
       />
 
       <div
-        style={{width: '65%', margin: '-6rem auto', padding: '12px', borderRadius: '8px',textAlign: 'start', borderWidth: '2px', borderColor: '#331D0E', backgroundColor: '#FFFFFF' }}>
+        style={{width: '65%', marginTop: '-88px', padding: '12px', borderRadius: '8px',textAlign: 'start', borderWidth: '2px', borderColor: '#331D0E', backgroundColor: '#FFFFFF' }}>
         <h1 className="font-pixelify" style={{color: '#FFD200', fontSize: '24px'}}>ARE YOU READY?</h1>
 
         <p className="font-courier-prime" style={{fontSize: '14px', marginTop: '8px'}}>
@@ -31,7 +48,7 @@ export default function ExplanationPage({ onBack, onContinue }) {
         style={{
           position: 'relative',
           width: 'fit-content',
-          margin: '4rem auto',
+          margin: '0 auto',
           backgroundColor: 'transparent',
         }}
       >
@@ -63,6 +80,21 @@ export default function ExplanationPage({ onBack, onContinue }) {
           }}
         />
       </div>
-    </BackgroundContainer>
+
+      <img
+        src="/images/ic_background_ground.png"
+        style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          height: '200px',
+          display: 'block',
+          zIndex: 2,
+          pointerEvents: 'none'
+        }}
+        alt="Background Ground"
+      />
+    </div>
   );
 }

@@ -1,42 +1,27 @@
 import React from "react";
-
+import BackgroundContainer from "./component/BackgroundContainer";
 export default function LandingPage({ onStart, onExplain }) {
 
   return (
-    <div style={{ height: '100%', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} role="main" aria-label="Landing Page">
-      <div style={{ position: 'relative', width: '100%', minHeight: '50vh' }}>
-        <img
-          src="/images/ic_background_gradient.png"
-          alt="Landing Page Image"
-          style={{ width: '100%', position: 'absolute', top: 0, left: 0, zIndex: 1 }}
-        />
-
-        <img
-          src="/images/ic_background_cloud.png"
-          alt="Landing Page Image"
-          style={{ width: '60%', position: 'absolute', top: '-10%', left: '-25%', zIndex: 2 }}
-        />
-
-        <img
-          src="/images/ic_background_cloud.png"
-          alt="Landing Page Image"
-          style={{ width: '60%', position: 'absolute', top: '-10%', right: '-20%', zIndex: 2 }}
-        />
-
+    <BackgroundContainer
+      background="/images/ic_background_ground.png"
+    >
+      <div style={{ marginTop: '10rem', height: '300px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <img
           src="/images/ic_windsona_logo.png"
-          alt="Landing Page Image"
-          style={{ width: '80%', position: 'absolute', zIndex: 3, top : '30%', alignItems: 'center', left: '10%' }}
+          style={{ height: '100%', objectFit: 'contain', pointerEvents: 'none' }}
+          alt=""
         />
       </div>
 
       <p 
         className="font-pixelify"
+        style={{marginTop: '-4rem'}}
       >
         CATCH YOUR VIBE, MEET YOUR WINDSONA
       </p>
 
-      <div
+            <div
         style={{
           position: 'relative',
           width: 'fit-content',
@@ -73,22 +58,7 @@ export default function LandingPage({ onStart, onExplain }) {
         />
       </div>
 
-
-      <img
-        src="/images/ic_background_ground.png"
-        style={{
-          position: 'fixed',
-          bottom: 0,
-          left: 0,
-          width: '100%',
-          height: '200px',
-          display: 'block',
-          zIndex: 2,
-          pointerEvents: 'none'
-        }}
-        alt="Background Ground"
-      />
-    </div>
+    </BackgroundContainer>
   );
 
 }

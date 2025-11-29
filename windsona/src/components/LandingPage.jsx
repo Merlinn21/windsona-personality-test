@@ -39,6 +39,7 @@ export default function LandingPage({ onStart, onExplain }) {
         src="/images/ic_start.png"
         style={{ width: '50%', display: 'block', margin: 'auto 0 auto', zIndex: 2, cursor: 'pointer' }}
         onClick={onExplain}
+        onTouchStart={e => { e.preventDefault(); onExplain(); }}
         alt="Start Button"
       />
       <img

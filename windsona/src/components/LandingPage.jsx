@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function LandingPage({ onStart, onExplain }) {
+
   return (
     <div style={{ height: '100%', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }} role="main" aria-label="Landing Page">
       <div style={{ position: 'relative', width: '100%', minHeight: '50vh' }}>
@@ -35,20 +36,57 @@ export default function LandingPage({ onStart, onExplain }) {
         CATCH YOUR VIBE, MEET YOUR WINDSONA
       </p>
 
-    <div
-      onTouchStart={onExplain}
-      onClick={onExplain}
-      style={{ cursor: 'pointer', display: 'inline-block' }}
-    >
+      <div
+        style={{
+          position: 'relative',
+          width: 'fit-content',
+          margin: '0 auto',
+          backgroundColor: 'transparent',
+        }}
+      >
+        {/* IMAGE — large, natural size */}
+        <img
+          src="/images/ic_start.png"
+          alt="Start"
+          style={{
+            display: 'block',
+            margin: '0 auto',
+            pointerEvents: 'none',
+            width: '160px',
+          }}
+        />
+
+        {/* CLICKABLE HITBOX — placed on top */}
+        <div
+          onPointerDown={onExplain}
+          style={{
+            position: 'absolute',
+            top: '40%',                      // adjust if needed
+            left: '50%',                   // center horizontally
+            transform: 'translateX(-50%)', // center alignment
+            width: '160px',
+            height: '50px',
+            cursor: 'pointer',
+            zIndex: 10,
+            backgroundColor: 'transparent', // invisible but clickable
+          }}
+        />
+      </div>
+
+
       <img
-        src="/images/ic_start.png"
-        style={{ width: '50%', display: 'block', margin: '0 auto' }}
-        alt="Start"
-      />
-    </div>
-      <img
-          src="/images/ic_background_ground.png"
-          style={{ width: '100%', position: 'fixed', left: 0,bottom: 0, zIndex: 2, height: '200px' }}
+        src="/images/ic_background_ground.png"
+        style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          height: '200px',
+          display: 'block',
+          zIndex: 2,
+          pointerEvents: 'none'
+        }}
+        alt="Background Ground"
       />
     </div>
   );

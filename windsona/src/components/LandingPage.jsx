@@ -35,16 +35,17 @@ export default function LandingPage({ onStart, onExplain }) {
         CATCH YOUR VIBE, MEET YOUR WINDSONA
       </p>
 
-      <div
-        onClick={onExplain}
-        style={{ display: 'inline-block', cursor: 'pointer' }}
-      >
-        <img
-          src="/images/ic_start.png"
-          style={{ width: '50%', display: 'block', margin: 'auto', zIndex: 2 }}
-          alt="Start Button"
-        />
-      </div>
+    <div
+      onTouchStart={onExplain}
+      onClick={onExplain}
+      style={{ cursor: 'pointer', display: 'inline-block' }}
+    >
+      <img
+        src="/images/ic_start.png"
+        style={{ width: '50%', display: 'block', margin: '0 auto' }}
+        alt="Start"
+      />
+    </div>
       <img
           src="/images/ic_background_ground.png"
           style={{ width: '100%', position: 'fixed', left: 0,bottom: 0, zIndex: 2, height: '200px' }}

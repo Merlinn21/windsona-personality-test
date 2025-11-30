@@ -359,6 +359,7 @@ export default function ResultPage({ result }) {
           borderRadius: "8px",
           display: 'flex',
           flexDirection: 'column',
+          alignContent:'flex-start'
         }}>
           <div className="flex-row" style={{ width: '100%', alignItems: 'flex-start'}}>
             <div className="flex-column flex-fill">
@@ -366,7 +367,7 @@ export default function ResultPage({ result }) {
                 Your windsona is...
               </p>
 
-              <p className="font-pixelify" style={{ lineHeight:0.8 ,fontSize: '32px', marginTop: '0.5rem', color: "#FFD200", textAlign: 'start' }}>
+              <p className="font-pixelify" style={{ lineHeight:0.8 ,fontSize:  'clamp(24px, 3vw, 16px)', marginTop: '0.5rem', color: "#FFD200", textAlign: 'start' }}>
                 {WINDSONA_MAP[result].name.toUpperCase()}
               </p>
 
@@ -382,8 +383,8 @@ export default function ResultPage({ result }) {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    height: 'clamp(45px, 10vw, 60px)',
-                    width: '100%'
+                    minHeight: 'clamp(35px, 8vw, 50px)',
+                    minWidth: 'clamp(55px, 8vw, 80px)'
                   }}>
                     <p className={"font-courier-prime"} style={{ margin: 0, fontSize: 'clamp(12px, 3vw, 16px)', textAlign: 'center' }}>{keyword}</p>
                   </div>
@@ -391,20 +392,21 @@ export default function ResultPage({ result }) {
               </div>
             </div>
 
-            <div className="flex-fill" style={{
-              backgroundColor: "#FFD200",
-              borderWidth: "2px",
-              borderColor: "#331D0E",
-              borderStyle: "solid",
-              borderRadius: "8px",
-              maxWidth: '180px',
-              aspectRatio: '7/8',
-              display: 'flex',
-              justifyContent: 'flex-start',
-              alignItems: 'flex-start',
-              minWidth: '50px',
-              marginLeft: '1rem',
-            }}>
+            <div className="flex-fill"   style={{
+                backgroundColor: "#FFD200",
+                borderWidth: "2px",
+                borderColor: "#331D0E",
+                borderStyle: "solid",
+                borderRadius: "8px",
+                flex: "0 0 clamp(90px, 20vw, 120px)", // FIX HERE
+                aspectRatio: "7/8",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "column",
+                marginLeft: "1rem",
+              }}
+            >
               <img
                 src={WINDSONA_MAP[result].image}
                 style={{ width: '100%', height: '100%', objectFit: 'contain', pointerEvents: 'none' }}
@@ -514,8 +516,7 @@ export default function ResultPage({ result }) {
               <div className="flex-row" style={{ gap: 'clamp(0.5rem, 2vw, 1rem)', width: '100%', justifyContent: 'center' }}>
                 {WINDSONA_MAP[result].compatibleWith.map((compatibleType, index) => (
                   <div key={index} style={{
-                    flex: 1,
-                    minWidth: 'clamp(40px, 30vw, 100px)',
+                    flex: "0 0 clamp(50px, 20vw, 120px)", // FIX HERE
                     aspectRatio: '7/8',
                     display: 'flex',
                     justifyContent: 'center',
@@ -538,7 +539,7 @@ export default function ResultPage({ result }) {
           
       </div>
 
-      <div style={{ marginTop: '-0.5rem', marginBottom: '1.5rem', height: '48px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <div style={{ marginTop: '-0.5rem', marginBottom: '1.5rem', height: '28px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <img
           src="/images/ic_tolak_angin.png"
           style={{ height: '100%', objectFit: 'contain', pointerEvents: 'none' }}

@@ -382,10 +382,10 @@ export default function ResultPage({ result }) {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    minHeight: 'clamp(35px, 8vw, 50px)',
+                    height: 'clamp(45px, 10vw, 60px)',
                     width: '100%'
                   }}>
-                    <p className={"font-courier-prime"} style={{ margin: 0, fontSize: 'clamp(12px, 3vw, 16px)' }}>{keyword}</p>
+                    <p className={"font-courier-prime"} style={{ margin: 0, fontSize: 'clamp(12px, 3vw, 16px)', textAlign: 'center' }}>{keyword}</p>
                   </div>
                 ))}
               </div>

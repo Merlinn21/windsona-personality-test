@@ -128,8 +128,9 @@ export default function QuestionPage({ questionIndex, answers, setAnswers, onNex
     console.log("Handling next for question index:", questionIndex, "with selected:", selected);
     const newAnswers = [...answers];
     newAnswers[questionIndex] = selected;
+    console.log("New answers array:", newAnswers);
     setAnswers(newAnswers);
-    onNext();
+    onNext(newAnswers);
   }
 
   return (

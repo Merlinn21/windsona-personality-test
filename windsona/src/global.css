@@ -79,3 +79,47 @@
   background-color: #FFD200;
   transform: scale(0.97);
 }
+
+.dot-animate {
+  position: relative;
+  display: inline-block;
+  padding-right: 0.2em; /* space for the dots */
+}
+
+/* Invisible placeholder to fix width */
+.dot-animate::before {
+  content: "...";
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  left: 100%; /* start exactly after the text */
+}
+
+/* Animated dots */
+.dot-animate::after {
+  content: "";
+  position: absolute;
+  left: 100%; /* attach to end of text */
+  animation: dots 1.5s steps(3, end) infinite;
+}
+
+@keyframes dots {
+  0%   { content: ""; }
+  33%  { content: "."; }
+  66%  { content: ".."; }
+  100% { content: "..."; }
+}
+
+.shake-interval {
+  animation: shake 0.5s ease-in-out infinite;
+  animation-delay: 1.5s; /* interval before each shake */
+}
+
+@keyframes shake {
+  0%   { transform: translateX(0); }
+  20%  { transform: translateX(-5px); }
+  40%  { transform: translateX(5px); }
+  60%  { transform: translateX(-5px); }
+  80%  { transform: translateX(5px); }
+  100% { transform: translateX(0); }
+}

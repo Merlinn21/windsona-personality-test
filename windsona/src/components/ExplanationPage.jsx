@@ -13,7 +13,7 @@ export default function ExplanationPage({ onBack, onContinue }) {
       />
 
       <div
-        style={{width: '65%', margin: '-6rem auto', padding: '12px', borderRadius: '8px',textAlign: 'start', borderWidth: '2px', borderColor: '#331D0E', backgroundColor: '#FFFFFF' }}>
+        style={{width: '65%', margin: '-7rem auto', padding: '12px', borderRadius: '8px',textAlign: 'start', borderWidth: '2px', borderColor: '#331D0E', backgroundColor: '#FFFFFF' }}>
         <h1 className="font-pixelify" style={{color: '#FFD200', fontSize: '24px'}}>ARE YOU READY?</h1>
 
         <p className="font-courier-prime" style={{fontSize: '14px', marginTop: '8px'}}>

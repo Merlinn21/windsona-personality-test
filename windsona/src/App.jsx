@@ -17,6 +17,113 @@ const PAGES = {
   RESULT_DETAIL: "result_detail",
 };
 
+// Trait mapping for each question/option
+const TRAIT_MAP = [
+  // Q1
+  [
+    { I: 1, N: 1 },      // A
+    { E: 1, P: 1 },      // B
+    { E: 1, F: 1 },      // C
+    { J: 1, T: 1 },      // D
+  ],
+  // Q2
+  [
+    { J: 1, S: 1 },
+    { P: 1, E: 1 },
+    { F: 1, E: 1 },
+    { J: 1, T: 1 },
+  ],
+  // Q3
+  [
+    { I: 1, N: 1 },
+    { E: 1, N: 1 },
+    { F: 1, S: 1 },
+    { J: 1, S: 1 },
+  ],
+  // Q4
+  [
+    { I: 1, S: 1 },
+    { E: 1, P: 1 },
+    { F: 1, N: 1 },
+    { T: 1, J: 1 },
+  ],
+  // Q5
+  [
+    { T: 1, J: 1 },
+    { E: 1, P: 1 },
+    { F: 1, P: 1 },
+    { T: 1, J: 1 },
+  ],
+  // Q6
+  [
+    { J: 1, S: 1 },
+    { P: 1, E: 1 },
+    { F: 1, E: 1 },
+    { J: 1, T: 1 },
+  ],
+  // Q7
+  [
+    { I: 1, S: 1 },
+    { P: 1, N: 1 },
+    { F: 1, E: 1 },
+    { J: 1, S: 1 },
+  ],
+  // Q8
+  [
+    { I: 1, N: 1 },
+    { E: 1, P: 1 },
+    { F: 1, E: 1 },
+    { J: 1, S: 1 },
+  ],
+  // Q9
+  [
+    { F: 1, I: 1 },
+    { E: 1, P: 1 },
+    { F: 1, S: 1 },
+    { T: 1, J: 1 },
+  ],
+  // Q10
+  [
+    { N: 1 },
+    { N: 1, P: 1 },
+    { F: 1 },
+    { T: 1, J: 1 },
+  ],
+];
+
+
+function calculateTraits(answers) {
+  const traits = { I: 0, E: 0, N: 0, S: 0, F: 0, T: 0, J: 0, P: 0 };
+  answers.forEach((ans, i) => {
+    // ans is "A", "B", "C", or "D"
+    const idx = "0123".indexOf(ans);
+    if (idx !== -1 && TRAIT_MAP[i] && TRAIT_MAP[i][idx]) {
+      Object.entries(TRAIT_MAP[i][idx]).forEach(([trait, value]) => {
+        traits[trait] += value;
+      });
+    }
+  });
+  return traits;
+}
+
+function getTopTraits(traits, count = 4) {
+  return Object.entries(traits)
+    .sort((a, b) => b[1] - a[1]) // Sort by value descending
+    .slice(0, count) // Take top N
+    .map(([trait, value]) => trait); // Return trait names only
+}
+
+function getPersonalityType(traits) {
+  const pairs = [
+    ['I', 'E'],
+    ['N', 'S'],
+    ['T', 'F'],
+    ['J', 'P'],
+  ];
+  return pairs.map(([a, b]) => (traits[a] >= traits[b] ? a : b)).join('');
+}
+
+
 function App() {
   const [page, setPage] = useState(PAGES.LANDING);
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -29,23 +136,29 @@ function App() {
     setPage(PAGES.QUESTION);
   }
 
-  function handleNextQuestion() {
+  function handleNextQuestion(newAnswers) {
     if (questionIndex < QUESTIONS.length - 1) {
-      console.log("questionIndex before next:", questionIndex);
       setQuestionIndex(questionIndex + 1);
     } else {
       setPage(PAGES.LOADING);
+      console.log("newAnswers:", newAnswers);
       setTimeout(() => {
-        // Minimal result calculation: count "Agree" answers
-        const score = answers.filter((a) => a === "Agree").length;
-        let res = "You are mostly Neutral.";
-        if (score === QUESTIONS.length) res = "You are very Agreeable!";
-        else if (score === 0) res = "You are very Disagreeable!";
-        else if (score > QUESTIONS.length / 2) res = "You lean Agreeable.";
-        else if (score < QUESTIONS.length / 2) res = "You lean Disagreeable.";
-        setResult(res);
+        let result = calculateTraits(newAnswers);
+        const type = getPersonalityType(result);
+
+        setResult(`Your top personality traits are: ${type}`);
         setPage(PAGES.RESULT);
-      }, 1200);
+
+        // Minimal result calculation: count "Agree" answers
+        // const score = answers.filter((a) => a === "Agree").length;
+        // let res = "You are mostly Neutral.";
+        // if (score === QUESTIONS.length) res = "You are very Agreeable!";
+        // else if (score === 0) res = "You are very Disagreeable!";
+        // else if (score > QUESTIONS.length / 2) res = "You lean Agreeable.";
+        // else if (score < QUESTIONS.length / 2) res = "You lean Disagreeable.";
+        // setResult(res);
+        // setPage(PAGES.RESULT);
+      }, 2000);
     }
   }
 

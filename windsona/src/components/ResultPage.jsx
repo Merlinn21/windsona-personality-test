@@ -398,7 +398,7 @@ export default function ResultPage({ result }) {
                 borderColor: "#331D0E",
                 borderStyle: "solid",
                 borderRadius: "8px",
-                flex: "0 0 clamp(90px, 20vw, 120px)", // FIX HERE
+                flex: "0 0 clamp(100px, 20vw, 120px)", // FIX HERE
                 aspectRatio: "7/8",
                 display: "flex",
                 justifyContent: "center",
@@ -516,7 +516,7 @@ export default function ResultPage({ result }) {
               <div className="flex-row" style={{ gap: 'clamp(0.5rem, 2vw, 1rem)', width: '100%', justifyContent: 'center' }}>
                 {WINDSONA_MAP[result].compatibleWith.map((compatibleType, index) => (
                   <div key={index} style={{
-                    flex: "0 0 clamp(50px, 20vw, 120px)", // FIX HERE
+                    flex: "0 0 clamp(80px, 20vw, 120px)", // FIX HERE
                     aspectRatio: '7/8',
                     display: 'flex',
                     justifyContent: 'center',

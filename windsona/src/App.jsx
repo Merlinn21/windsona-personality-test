@@ -146,7 +146,7 @@ function App() {
         let result = calculateTraits(newAnswers);
         const type = getPersonalityType(result);
 
-        setResult(`Your top personality traits are: ${type}`);
+        setResult(`${type}`);
         setPage(PAGES.RESULT);
 
         // Minimal result calculation: count "Agree" answers
@@ -187,13 +187,6 @@ function App() {
       {page === PAGES.RESULT && answers.length === QUESTIONS.length && (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
           <ResultPage result={result} />
-          <button
-            style={{ marginTop: '1rem', padding: '0.5rem 1rem', background: '#444', color: '#fff', borderRadius: '0.25rem', border: 'none' }}
-            onClick={() => setPage(PAGES.RESULT_DETAIL)}
-            aria-label="View Details"
-          >
-            View Details
-          </button>
         </div>
       )}
       {page === PAGES.RESULT_DETAIL && (
